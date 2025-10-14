@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<title>市販ポテンショスタットとの組み合わせ：接続法</title>
+<meta charset="utf-8">
+</head>
+<body>
+<H1>
+2. 市販ポテンショスタットとの組み合わせ：接続法
+</H1>
+Analog Discovery には 30 ピンの外部接続端子がある．付属品として，ブレッドボードに接続することを想定したと思われるピンケーブルが付いているが，このままでは他の機器との接続がやりにくいので，適当な端子を取り付けたケースに納めると使いやすいし，汎用性もあがり，他の測定時にも対応しやすい．Fig. 2.1 に加工例を示す．<p>
+
+Analog Discovery本体もケース内部に固定するので，ケースにはUSBケーブル用の穴も空けておく必要がある (Fig. 2.1 では左側面)．<p>
+
+<table>
+  <tr>
+    <td width="400">
+      <img height="300" src="IMG20190919110612.jpg">
+    </td>
+    <td>
+      <img height="300" src="IMG20190919110548.jpg">
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Fig. 2.1 金属ケースに納めて端子を付ける．
+    </td>
+    <td>
+      Fig. 2.2 内部の接続例．端子につながっていないケーブルは途中で切断してある．
+    </td>
+  </tr>
+</table>
+
+<p>
+
+本体のピン端子とケースのターミナルの接続には，付属ケーブルをそのまま流用するのが簡単である．ケースに取り付ける端子は，いわゆるバナナターミナルが使いやすいと思うが，BNC端子でもよい．単純に接続して差動入力にしておいた方が汎用性は高い．今回の目的には，1+，1-，2+，2-，W1，Ground の6本を残し，他のケーブルはショート等がおこらないように切断してしまうのが一番簡単である．Fig. 2.3 に40ピン端子のアサインメントを示すが，赤枠で囲った6箇所だけを使う．<p>
+
+<table>
+  <tr>
+    <td>
+      <img width="400" src="pin-assign.gif">
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Fig. 2.3 Analog Discovery の 30 ピン端子のアサインメント.<br>
+      赤枠で囲ったところだけを使う.
+    </td>
+  </tr>
+</table>
+
+<p>
+
+ポテンショスタットとの接続は Fig. 2.4 を参照．ポテンショスタットはアナログの制御信号入力端子，電位出力端子，電流出力端子がある，古典的なアナログポテンショスタットであれば，基本的に何でも使える．接続ケーブルは，使用する機器によって適切に選択する．なお，Analog Discovery の記録は 2ch なので，写真のようなバイポテンショスタットを使っても両方のユニットの記録をすることはできない．たとえば回転リング-ディスク電極法の記録はこのままではできない．<p>
+
+<table>
+<tr>
+  <td><img src="connection.gif">
+  <td><img width="300" src=""></td>
+</tr>
+<tr>
+  <td>Fig. 2.4 ポテンショスタットとの接続．</td>
+  <td></td>
+</tr>
+</table>
+
+<p>
+
+
+
+<hr>
+<a href="../intro/index.html">1. Analog Discovery と WaveForms <img width="30" src="../rightarrow.gif"></a>　　
+<a href="../index.html"><img width="25" src="../uparrow.gif">目次</a>　
+<a href="../chronoamperometry/index.html"><img width="30" src="../leftarrow.gif">  3. ポテンシャルステップクロノアンペロメトリ</a><br>
+<!--
+<a href="cv.html">4. XYレコータとして：サイクリックボルタンメトリ</a><br>
+<a href="eis.html">5. ネットワークアナライザと電気化学インピーダンス</a><br>
+<a href="cap.html">6. 微分容量測定</a><br>
+<a href="pulse.html">7. パルスボルタンメトリ</a><br>
+<a href="psext.html">. ポテンショスタット拡張基板の自作</a><br>
+-->
+
+
+</body>

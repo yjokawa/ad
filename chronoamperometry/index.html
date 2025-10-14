@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<title>ポテンシャルステップクロノアンペロメトリ</title>
+<meta charset="utf-8">
+</head>
+<body>
+<H1>
+3. ポテンシャルステップクロノアンペロメトリ
+</H1>
+実際の電気化学測定へ応用してみよう．<br>
+ここでは方形波を用いるポテンシャルステップクロノアンペロメトリを扱う．<p>
+<hr>
+
+<h2>制御波形の設定</h2>
+WaveForms の起動画面から Wavegen を選択する (あるいは Welcome の [+] > Wavegen)<br>
+これがファンクションジェネレータの設定画面である．デフォルトでは 1 kHz のサイン波になっている．<br>
+以下，Fig. 3.1 を参照．<br>
+
+<table>
+  <tr>
+    <td rowspan=2>
+      <ul>
+        <li>波形 (Type) を Square に変更する．</li>
+        <li>Enableにチェックを入れる．この時点で，ファンクションジェネレータの出力が始まる)</li>
+        <li>[Simple] の右横の歯車アイコンをクリックし，Idel output を "Initial" に設定する．</li>
+        <ul>
+          <li>この設定により，ファンクションジェネレータのスタートボタンを押すまでの出力が，設定波形の最初の電位になる．</li>
+        </ul>
+      </ul>
+    </td>
+    <td>
+      <img src="ca1.jpg" width=500>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Fig. 3.1 波形の選択と出力初期値の設定 (1)
+    </td>
+  </tr>
+</table>
+<p>
+<p>
+電位プログラムを作る．以下，Fig. 3.2 を参照．<br>
+
+<table>
+  <tr>
+    <td rowspan=2>
+      <ul>
+        <li>まず測定時間 (ステップ後の記録時間) を決める．方形波の周波数 Frequency は (2×測定時間)<sup>-1</sup> より小さくする．
+        <ul>
+          <li>たとえば 10 s であれば 1/(2×10) = 0.05 Hz より遅くする．</li>
+        </ul>
+        <li>Amplitude (振幅) は，電位ステップ幅の1/2．</li>
+        <ul>
+          <li>-0.10 V から +0.20 V にステップさせる場合，ステップ幅が 0.30 V なので，0.15 V に設定．</li>
+        </ul>
+        <li>Offsetはステップ方向によって，カソードステップの場合，初期電位 - Amplitude，アノードステップの場合，Amplitude - 初期電位 に設定．</li>
+        <li>ステップ前の待機時間とステップ方向は Phase の値で調整する．画面に表示される電位パターンを参照．</li>
+      </ul>
+    </td>
+    <td>
+      <img src="ca2.jpg" width=800>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Fig. 3.2 波形の選択と出力初期値の設定 (2)
+    </td>
+  </tr>
+</table>
+<p>
+<hr>
+<p>
+<h2>記録画面の設定</h2>
+WaveForms の左上，[Welcome] から Scope を選択する (あるいは Welcome の [+] > Scope)<br>
+オシロスコープの画面が現れる．先ほどの Wavegen 画面とは別タブの形になっているので，いつでも Wavegen 画面に切り替えられる．<br>
+記録条件を設定する．<br>
+Analog Discovery は A/D 変換の分解能が 14-bit しかないので，ポテンショスタット側の電流感度の設定が重要である．基本的には可能な限り高い電流感度の設定で測定することが望ましい．<br>
+以下，Fig. 3.3 を参照．<br>
+
+<table>
+  <tr>
+    <td rowspan=2>
+      <ul>
+        <li>全記録時間 (待機時間 + ステップ後の測定時間) を <i>t</i><sub>m</sub> をもとに，Base を <i>t</i><sub>m</sub>/10 より大きな値にする．
+        <ul>
+          <li>たとえば待機時間 5 s に測定時間 10 s であれば <i>t</i><sub>m</sub> = 15 s なので，1.5 s/div より大きな値 (2 s/div 等) に設定する．</li>
+          <li>時間分解能がここで決まるので，むやみに大きな値にしてはならない．</li>
+        </ul>
+        <li>Ch1 (電位) の記録条件．</li>
+        <ul>
+          <li>Range と Offset で，設定された開始電位，ステップ電位が画面の表示範囲に入るように．</li>
+          <ul>
+            <li>-0.10 V から +0.20 V へのステップの場合，Offset 0，Range 200 mV/div など．</li>
+          </ul>
+        </ul>
+        <li>Ch2 (電流) の記録条件．</li>
+        <ul>
+          <li>ポテンショスタットの電流感度とセットで決める必要がある．</li>
+          <ul>
+            <li>アナログポテンショスタットは，電流のフルスケール (FS) を 1 V または 10 V で出力するものが多い．</li>
+            <li>どちらのタイプかは説明書で確認しておくこと</li>
+          </ul>
+          <li>ポテンショスタットは電流のオーバーロードが発生しない範囲で最高の感度にするのが基本．</li>
+          <li>1 V FS のポテンショスタットの場合，200 mV/div (または 500 mV/div) に設定する</li>
+          <li>10 V FS のポテンショスタットの場合，2 V/div (または 5 V/div) に設定する</li>
+        </ul>
+      </ul>
+    </td>
+    <td>
+      <img src="ca3.jpg" width=550>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Fig. 3.3 オシロスコープの設定
+    </td>
+  </tr>
+</table>
+<p>
+<hr>
+<h2>測定</h2>
+以下，Fig. 3.4 を参照．
+
+<table>
+  <tr>
+    <td rowspan=2>
+      <ul>
+        <li>測定セルへの配線を適切に行う．ポテンショスタットのスイッチを入れ，外部ファンクションジェネレータを有効にし，電流感度を適切に設定する．</li>
+        <li>この状態でポテンショスタットを有効にすると，初期電位が印加される．</li>
+        <li>[Scope 1] タブの 右向き三角 <img src="../play.jpg"> をクリックすると記録が始まる．</li>
+        <ul>
+          <li>このとき，<img src="../play.jpg"> が <img src="../stop.jpg"> に変わる．</li>
+        </ul>
+        <li>ただちに [Wavegen 1] タブの 右向き三角 <img src="play.jpg"> をクリックすると設定した電位プログラムが動き出す．</li>
+        <li>所定の待機時間後，電位のステップがおこり，電流が記録される．</li>
+        <li>所定時間の測定が終わったら，[Scope 1] タブの 赤丸 <img src="../stop.jpg"> をクリックして，記録を終了する．</li<
+        <li>[Wavegen 1] タブの 赤丸 <img src="../stop.jpg"> をクリックして，ファンクションジェネレータを停止する．</li>
+        <li>ポテンショスタットをオフにする．</li>
+      </ul>
+    </td>
+    <td>
+      <img src="ca4.jpg" width=550>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Fig. 3.4 測定時の操作 (記録の開始と停止)
+    </td>
+  </tr>
+</table>
+<p>
+<hr>
+<h2>測定データの保存</h2>
+オシロスコープ画面で，File > Export，現れた画面で [Save to Clipbord] ボタンをクリック．<br>
+計測データがクリップボードに取り込まれたので，Excel 等を開いて貼り付ける (編集 > 貼り付け や Ctrl+V など)．<br>
+<strong>重要：このとき，ポテンショスタットの電流感度の値を記録に加えること．</strong><br>
+オシロスコープでの記録は，原則として電圧情報である．アナログポテンショスタットの電流出力端子は，流れた電流に比例する電圧を出力し，オシロスコープではそれを (時間の関数として) 記録している．この変換係数がポテンショスタットの電流感度の設定で決まる．たとえば，1 V FS のポテンショスタットで 1 mA の感度設定にした場合，変換係数は 1 mA/V になる．したがって，Ch2 の記録電圧値にこの値をかけると電流の大きさになる．この例では 0.10 V と記録されていた場合は，0.10 mA 流れていたということになる．<br>
+<p>
+<hr>
+<h2>測定例</h2>
+Fig. 3.5 に実際に測定した結果の Cottrtellプロットの例を示す．溶液は 1.1 mmol dm<sup>-3</sup> K<sub>3</sub>Fe(CN)<sub>6</sub> (0.1 mol dm<sup>-3</sup> KNO<sub>3</sub>)，作用極は ITO 電極，電位ステップは 0.40 V → -0.10 V vs. Ag/AgCl であり，良好な直線が得られている．ここから計算される拡散係数は 5.6×10<sup>-6</sup> cm<sup>2</sup> s<sup>-1</sup> と文献値とよく一致した．
+
+<table>
+  <tr>
+    <td>
+      <img src="ca5.jpg" width=800>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Fig. 3.5 Cottrellプロットの例
+    </td>
+  </tr>
+</table>
+
+
+
+<hr>
+<a href="../connection/index.html">2. 市販ポテンショスタットとの組み合わせ：接続法 <img width="30" src="../rightarrow.gif"></a>　　
+<a href="../index.html"><img width="25" src="../uparrow.gif">目次</a>　
+<a href="../cyclicvoltammetry/index.html"<img width="30" src="../leftarrow.gif">  4. サイクリックボルタンメトリ</a><br>
+<!--
+<a href="eis.html">5. 電気化学インピーダンス</a><br>
+<a href="cap.html">6. 微分容量測定</a><br>
+<a href="pulse.html">7. パルスボルタンメトリ</a><br>
+<a href="psext.html">. ポテンショスタット拡張基板の自作</a><br>
+-->
+
+
+</body>

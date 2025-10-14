@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head >
+<title>微分容量測定</title>
+<meta charset="utf-8">
+</head>
+<body>
+<H1>
+6. 微分容量測定
+</H1>
+ここでは微分容量測定を扱う．また，WaveForms のスクリプトを用いた自動測定の利用例も紹介する．<p>
+微分容量測定は，電極-溶液界面の状況を調べるひとつの方法である．金属電極であれば電気二重層容量に対応し，電極表面に分子やイオンが吸着すると変化がおこるため，吸着状態についての評価に利用できる．半導体電極では空乏層容量を評価することに利用でき，フラットバンド電位やドープ濃度の評価に利用できる．測定としてはインピーダンス解析の一種だが，電気化学インピーダンス測定では，通常，電極反応が進行する状態で，電位を固定して周波数による変化を測定するのに対し，ここではファラデー反応のおこらない充電領域において，周波数を固定して容量成分の電位依存性を測定する．<p>
+<hr>
+
+<h2>使用できるポテンショスタットについて</h2>
+交流応答を測定するので，ポテンショスタットの周波数特性を評価しておく必要がある．方法は <a href="../eis/index.html">前節</a> と同じである．測定に用いる周波数は 1 kHz 程度が多いので，この程度まで測定ができるものが適当であるが，使用するポテンショスタットが追随する程度に測定周波数を落としてもよい．<p>
+<hr>
+
+<a name="manual">
+<h2>測定</h2>
+Analog Discovery とポテンショスタットとの接続は，<a href="../connection/index.html">2節</a> の接続法にする (前節の電気化学インピーダンス測定とは異なる)．<br>
+WaveForms の起動画面から Impedance を選択する (あるいは Welcome の [+] > Impedance)．<p>
+<table>
+  <tr>
+    <td rowspan=2>
+      以下，Fig. 6.1 (右図) を参照．<br>
+      <ul>
+        <li>[Meter] タブを選択</li>
+        <li>W1-C1P-DUT-C1N-C2-R-GND を選択</li>
+        <li>周波数は，測定可能な範囲で適当に選択</li>
+        <li>Model 欄．Series を選択．</li>
+        <li>Amplitude 欄．変調電位振幅．通常 10～20 mV 程度に設定する．小さい方がよいが，測定精度との兼ね合いがあるので，この程度がよいだろう．</li>
+        <li>Offset 欄．設定電位．必要な電位に設定する．</li>
+        <li>Resister 欄．ポテンショスタットの電流感度に対応して，電流感度の逆数を設定する．たとえば感度設定が 1 mA/V であれば，1 kΩ (Ω = V/A に注意) を設定する．</li>
+      </ul>
+    </td>
+    <td>
+      <a href="cap1.jpg" target="_blank"><img src="cap1.jpg" width=700>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Fig. 6.1 測定パラメータの設定
+    </td>
+  </tr>
+</table>
+<p>
+<ul>
+  <li>ポテンショスタットの感度を適切に設定する (上記 Resiter 設定と矛盾のないように)．</li>
+  <li>ポテンショスタットを測定状態にする．</li>
+  <li>Single ボタン <img src="../single.jpg"> をクリックする．</li>
+  <li>データ欄に測定結果が出るので，Series Capacitance欄の測定結果を記録する (ノートや別ファイルに転記する)．</li>
+  <li>設定電位を変更し，同様に Series Capacitance を記録する．</li>
+</ul>
+<p>
+<hr>
+<h2>測定例</h2>
+<table>
+  <tr>
+    <td rowspan=2 valign=top>
+      このようにして得られた測定結果の例を Fig. 6.2 (右図) に示す．<br>
+      この図は n型半導体である ITO 電極の Mott-Schottky プロットである (電解液は 0.1 mol L<sup>-1</sup> KNO<sub>3</sub>)．半導体電極の空乏層バイアス下での微分容量の電位依存性に対応し，この傾きから半導体のドープ濃度，電位軸切片からフラットバンド電位を求めることができる．<br>
+      この測定では，測定対象に CR の直列回路を仮定して解析を行っている (Model に Series を採用している)．そのため，ファラデー電流が流れるようになると (C に有限の並列抵抗成分が入るようになると) 正しく微分容量を求められない．Fig. 6.2 の場合，電位の低い領域 (0.0 V 以下) では溶存酸素還元のファラデー電流が流れ始めており (このデモでは脱酸素していない)，その影響で C の値が正しく評価できなくなるため，Mott-Schottky 式の直線からずれてくる．<p>
+    </td>
+    <td>
+      <a href="cap2.jpg" target="_blank"><img src="cap2.jpg" width=500>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Fig. 6.2 微分容量測定から作成した Mott-Schottky プロットの例
+    </td>
+  </tr>
+</table>
+
+<hr>
+<h2>スクリプトを用いた自動測定</h2>
+WaveForms のインピーダンス測定では，周波数の自動変化を行うことはできるが，電位変化を自動で行う機能はない．そのため，上述の測定は，電位を1点ずつ手動で設定して，測定結果も1点ごとにどこかに転記するという方法を取っている．<br>
+この測定を半自動化するため，WaveForms のスクリプト機能利用することができる．<br>
+<p>
+以下，作業手順．<br>
+<ul>
+  <li><a href="difcap.dwf3script">スクリプトファイル</a> をダウンロードしておく．</li>
+  <li>WaveForms の表示設定を Docking モードにする：Settings > Options : (Application tab) Instrument windows : Docking を選択，[OK]<br>
+      なお，Docking モードは CV の測定等ではとくにメリットがないので，普段は Tabbed モードにしておいてよい．ただし，他の測定ではどちらであっても測定自体は問題なく行える．．</li>
+  <li>Welcom[+] から Script を開き，File > Open Project から，ダウンロードした difcap.dwf3script を読み込む．</li>
+  <li>Welcom[+] から Impedance を開き，Meter モードを選択，上記の <a href="#manual">マニュアル測定例</a> の手順で基本設定する．<br>
+      Offset には開始電位を設定しておく．</li>
+  <li>Script ペイン (枠) の中のスクリプトを修正する．開始電位 (Start potential)，終了電位 (End potential)，電位間隔 (Potential interval) はいずれも V 単位の数値を設定する．電位変化後の待ち時間 (Waiting time after potential change) は s 単位の時間を設定．通常，数 s 程度でよい．</li>
+  <li><b>Script ペイン</b>の Run <img src="../play.jpg"> ボタンをクリックして，測定を開始する．</li>
+  <li>測定結果は Script ペインの下の Output ペインに表示される．<br>
+      <ul>
+        <li>データ形式は，1行目が測定日時，2行目がデータ項目名</li>
+        <li>3行目からがデータで，左から順に，データ番号，測定開始からの経過時間 (s)，設定電位 (V)，微分容量 (F)．</li>
+      </ul>
+  <li>測定結果を Copy & Paste で Excel 等に渡す．</li>
+</ul>
+
+<p>
+<hr>
+<a href="../eis/index.html">5. 電気化学インピーダンス <img width="30" src="../rightarrow.gif"></a>　　
+<a href="../index.html"><img width="25" src="../uparrow.gif">目次</a>　
+<a href="../potentiostat-ext.html"><img width="30" src="../leftarrow.gif">8. ポテンショスタット拡張基板の自作</a><br>
+<!--
+<a href="pulse.html">7. パルスボルタンメトリ</a><br>
+-->
+
+
+</body>

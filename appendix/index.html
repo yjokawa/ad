@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<title>付録</title>
+<meta charset="utf-8">
+</head>
+<body>
+<H1>
+付録
+</H1>
+<body>
+<a name="cv-params">
+<h2>サイクリックボルタンメトリの波形データ設定の基本的な考え方</h2>
+
+WaveForms の Wavegen の波形設定パラメータはサイクリックボルタンメトリで常用されるパラメータではないので，適切に変換を行って設定する必要がある．ここではその基本的な考え方を説明する．実際には，これらの換算を行う<a href="../cyclicvoltammetry/cv.dwf3script">スクリプト</a>を作成したので，それを利用するのが簡単である (<a href="../cyclicvoltammetry/index.html">本記事</a>を参照)．<br>
+      <br>
+      Wavegen の三角波の設定パラメータは，次の5つである．<br>
+      <li>振幅 (Amplitude)
+      <li>オフセット (Offset)
+      <li>周波数 (Frequency)
+      <li>位相 (Phase)
+      <li>対称性 (Symmetry)
+      <p>
+      これを，CV の基本設定パラメータから算出して設定する．CV の基本パラメータは以下の5つ．<br>
+      <li>掃引速度 v
+      <li>開始電位 E<sub>i</sub>
+      <li>上側折り返し電位 E<sub>u</sub>
+      <li>下側折り返し電位 E<sub>d</sub>
+      <li>開始時の掃引方向
+      <p>
+<table>
+  <tr>
+    <td rowspan=2>
+      パラメータ変換の考え方を Fig. A.1 (右図) に示す．<br>
+      上下の折り返し電位 E<sub>u</sub> と E<sub>d</sub> を決める．<br>
+      Amplitude と Offset を以下の式で求める．<br>
+      <li>Amplitude = (E<sub>u</sub> - E<sub>d</sub>)/2</li>
+      <li>Offset = (E<sub>u</sub> + E<sub>d</sub>)/2</li>
+      掃引速度 v を決める．<br>
+      Frequency を以下の式で求める．<br>
+      <li>Frequency = v/{2×(E<sub>u</sub> - E<sub>d</sub>)}</li>
+      開始電位 E<sub>i</sub> を決める．<br>
+      Phase を以下の式で求める．<br>
+      <li>アノード方向スイープから始める場合： <br>Phase = 360 × Frequency × (E<sub>i</sub> - Offset) / v</li>
+      <li>カソード方向スイープから始める場合： <br>Phase = 360 × Frequency × (Offset - E<sub>i</sub>) / v + 180</li>
+      ※ 計算された Phase が負になる場合は 360 を足す．360を越える場合は，360を引く．<br>
+      <li>Symmetry は 50% のまま．</li>
+      <br>
+    </td>
+    <td valign=top>
+      <img src="a1.jpg" width=600>
+    </td>
+  </tr>
+  <tr>
+    <td align=center>
+      Fig. A.1 CVパラメータと波形設定値の関係<br>
+    </td>
+  </tr>
+</table>
+<br>
+実際の Wavegen への設定の様子を以下に示す．
+
+<table>
+  <tr>
+    <td rowspan=2 valign=top>
+      Fig. A.2 (右図) を参照．<br>
+      Wavegen の起動と出力初期値の設定．<br>
+      <ul>
+        <li>1) WaveForms の起動画面から Wavegen を選択する (あるいは Welcome の [+] > Wavegen)<br>
+            デフォルトでは Simple モードで 1 kHz のサイン波になっている．<br>
+        <li>2-1) モードを Simple (デフォルト) にし，波形 (Type) を Triangle に変更する．</li>
+        <li>2-2) Enableにチェックを入れる．この時点で，ファンクションジェネレータの出力が始まる)</li>
+        <li>2-3) [Simple] の右横の歯車アイコンをクリックし，Idel output を "Initial" に設定する．</li>
+        <ul>
+          <li>この設定により，ファンクションジェネレータのスタートボタンを押すまでの出力が，設定波形の最初の電位になる．</li>
+        </ul>
+      </ul>
+    </td>
+    <td>
+      <img src="a2-1.jpg" width=500><br>
+      <img src="a2-2.jpg" width=500>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Fig. A.2 波形の選択と出力初期値の設定
+    </td>
+  </tr>
+  <tr>
+    <td rowspan=2 valign=top>
+      Fig. A.2 (右図) を参照．<br>
+      波形データはこれらのパラメータを設定する．<br>
+    </td>
+    <td>
+      <img src="a3.jpg" width=500>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Fig. A.3 波形のパラメータの設定 (2)
+    </td>
+  </tr>
+</table>
+<p>
+<p>
+
+<hr>
+
+<a href="../index.html"><img width="25" src="../uparrow.gif">目次</a>　
+
+</body>
+</html>

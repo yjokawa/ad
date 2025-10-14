@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<title>サイクリックボルタンメトリ</title>
+<meta charset="utf-8">
+</head>
+<body>
+<H1>
+4. サイクリックボルタンメトリ
+</H1>
+ここでは三角波掃引を用いるサイクリックボルタンメトリ (Cyclic voltammetry, CV) を扱う．<br>
+オシロスコープは，XYレコーダモードで使用する．<p>
+<hr>
+<h2>スクリプトによる掃引条件の設定</h2>
+<table>
+  <tr>
+       WaveForms の任意関数発生機能 Wavegen には基本的な制御波形がプリセットされている．CV では三角波を用いればよいのだが，波形パラメータは CV 用の設定パラメータとは異なっており，適当な変換が作業が必要になる．パラメータ変換の計算自体は難解なものではないが，変換計算を行って Wavegen に設定値を書き込む作業が面倒である．なお，変換の基本原理は，<a href="appendix.html#cv-params">別ページ</a>に説明があるので，参照されたい．<br>
+       そこで，より設定を簡単に行うため，設定用のスクリプトを含む，<a href="CV.dwf3work">基本設定ファイル (Workspace) を用意した</a>．あらかじめ適当な場所に保存しておく．初回は，Settings -> Device Manager から使用するデバイスを自機に切り替え，そのファイルを保存しておく (Workspace -> Save)．念のため，Wavegen1 の設定で Enable のチェックボックスがチェックされていることを確認してください．<p>
+    <td rowspan=2 valign=top >
+       WaveForms を起動し，メニューの Workspace から<a href="CV.dwf3work">CV.dwf3work</a> を読み込む．<br>
+       Script ペイン (あるいはタブ) で，掃引条件を設定する (Fig. 4.1 (右図) 参照)．<br>
+       <ul>
+<!--         <li>Wavegen と Scope はあらかじめ開いておく．
+         <li>Wavegen は Simple モードにしておく (開いた直後は Simpleモードになっているので，変更した場合)．Fig. 4.1 の操作 2) 参照．
+         <li>Welcome [+] > Script で Script タブを開く．
+         <li>Script タブの File > Open Project で<a href="cv.js">スクリプト</a>を読み込む．Fig. 4.1 (右図) 参照． -->
+         <li>Script の冒頭部分 (赤枠で囲った部分) がパラメータ設定になっているので，測定条件に合わせて変更する．
+         <ul>
+           <li>SweepRate 掃引速度を V/s 単位で設定
+           <li>StartPotential 掃引開始電位を V 単位で設定
+           <li>UpperVertexPotential 上側折り返し電位を V 単位で設定
+           <li>LowerVertexPotential 下側折り返し電位を V 単位で設定
+           <li>InitialDirection 掃引開始時の掃引方向を指定．アノード方向 (電位上昇方向)のときは 1，カソード方向 (電位下降方向) のときは -1 を指定
+        </ul>
+        <li>(Script タブの) Runボタン<img src="play.jpg">をクリックすると Wavegen にパラメータが設定される．
+        <li>測定条件を変更するときは，変更箇所の数値を書き換え，(Script タブの) Runボタン<img src="play.jpg">をクリックする．
+        <li>問題がなければ Output ペインに "Ok.  The wave pattern has been properly set." と表示される．
+        <li>Wavegen ペイン (またはタブ) で波形を確認する．
+      <ul>
+    </td>
+    <td>
+      <br>
+      <img src="cv1.jpg" width=600>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Fig. 4.1 掃引条件設定スクリプトとパラメータ修正
+    </td>
+  </tr>
+</table>
+<p>
+<hr>
+<p>
+<h2>記録画面の設定</h2>
+Analog Discovery は A/D 変換の分解能が 14-bit しかないので，ポテンショスタット側の電流感度の設定が重要である．基本的には可能な限り高い電流感度の設定で測定することが望ましい．<br>
+オシロスコープのペイン (あるいはタブ) に移動する．以下，Fig. 4.2 (右図) を参照．<br>
+<br>
+<table>
+  <tr>
+    <td rowspan=2>
+      時間軸の設定<br>
+      <ul>
+         <li>掃引速度，掃引範囲，サイクル数をもとに，全測定時間 t<sub>m</sub> を概算する．Time 設定の Base を t<sub>m</sub>/10 より大きな値にする．</li>
+         <ul>
+           <li>たとえば1周期に 10 s かかり，5周期分の測定を行うなら 5 s/div 以上が必要．</li>
+           <li>このとき，Base/800 が，記録時の時間分解能になる．5 s/div なら 6.25 ms ごとにサンプリングされる．データの最大点数は8000点．</li>
+         </ul>
+      </ul>
+      電位軸の設定<br>
+      Ch1 (電位) の記録条件．
+      <ul>
+        <li>Range と Offset で，測定したい電位範囲が画面の表示範囲に入るように設定．</li>
+        <ul>
+          <li>下側折り返し電位 -0.20 V，上側折り返し電位 +0.50 V の場合，Offset -100 mV，Range 100 mV/div など．</li>
+          <li>この設定は記録の精度には影響しないので，測定時の見やすさだけで決めてよい．</li>
+        </ul>
+      </ul>
+      電流軸の設定<br>
+      Ch2 (電流) の記録条件．
+      <ul>
+        <li>ポテンショスタットの電流感度とセットで決める必要がある．</li>
+        <ul>
+          <li>アナログポテンショスタットは，電流のフルスケール (FS) を 1 V または 10 V で出力するものが多い．</li>
+          <li>どちらのタイプかは説明書で確認しておくこと</li>
+        </ul>
+        <li>ポテンショスタットは電流のオーバーロードが発生しない範囲で最高の感度にするのが基本．</li>
+        <li>1 V FS のポテンショスタットの場合，200 mV/div (または 500 mV/div) に設定する</li>
+        <li>10 V FS のポテンショスタットの場合，2 V/div (または 5 V/div) に設定する</li>
+      </ul>
+      
+    </td>
+    <td>
+      <img src="cv2-1.jpg" width=550><br>
+      <br>
+      <img src="cv2-2.jpg" width=550>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Fig. 4.2オシロスコープの設定
+    </td>
+  </tr>
+</table>
+<p>
+<hr>
+<h2>測定</h2>
+<!-- 以下，Fig. 4.3 を参照． -->
+<!-- <table>
+  <tr>
+    <td rowspan=2> -->
+      <ul>
+        <li>測定セルへの配線を適切に行う．ポテンショスタットのスイッチを入れ，外部ファンクションジェネレータを有効にし，電流感度を適切に設定する．</li>
+        <li>この状態でポテンショスタットを有効にすると，初期電位が印加される．</li>
+        <li>[Scope 1] タブの 右向き三角 <img src="play.jpg"> をクリックすると記録が始まる．</li>
+        <ul>
+          <li>このとき，<img src="play.jpg"> が <img src="stop.jpg"> に変わる．</li>
+        </ul>
+        <li>ただちに [Wavegen 1] タブの 右向き三角 <img src="play.jpg"> をクリックすると設定した電位プログラムが動き出す．</li>
+        <li>電位の掃引がはじまり，電流が記録される．</li>
+        <li>所定時間の測定が終わったら，[Scope 1] タブの 赤丸 <img src="stop.jpg"> をクリックして，記録を終了する．</li<
+        <li>[Wavegen 1] タブの 赤丸 <img src="stop.jpg"> をクリックして，ファンクションジェネレータを停止する．</li>
+        <li>ポテンショスタットをオフにする．</li>
+      </ul>
+<!--    </td> -->
+<!--    <td>
+      <img src="ca3.jpg" width=550>
+    </td> -->
+  </tr>
+<!--   <tr>
+    <td>
+      Fig. 4.3 測定時の操作 (記録の開始と停止)
+    </td>
+  </tr> -->
+<!-- </table> -->
+<p>
+<hr>
+<h2>測定データの保存</h2>
+オシロスコープ画面で，File > Export，現れた画面で [Save to Clipbord] ボタンをクリック．<br>
+計測データがクリップボードに取り込まれたので，Excel 等を開いて貼り付ける (編集 > 貼り付け や Ctrl+V など)．<br>
+<strong>重要：このとき，ポテンショスタットの電流感度の値を記録に加えること．</strong><br>
+オシロスコープでの記録は，原則として電圧情報である．アナログポテンショスタットの電流出力端子は，流れた電流に比例する電圧を出力し，オシロスコープではそれを (時間の関数として) 記録している．この変換係数がポテンショスタットの電流感度の設定で決まる．たとえば，1 V FS のポテンショスタットで 1 mA の感度設定にした場合，変換係数は 1 mA/V になる．したがって，Ch2 の記録電圧値にこの値をかけると電流の大きさになる．この例では 0.10 V と記録されていた場合は，0.10 mA 流れていたということになる．<br>
+<p>
+<hr>
+<h2>測定例</h2>
+Mov. 4.1 に実際に測定しているときの様子を動画で示す．<br>
+<video src="cv.mp4" controls width=800></video><br>
+Mov. 4.1 サイクリックボルタンメトリ測定中の様子．<p>
+<p>
+<table>
+  <tr>
+    <td rowspan=2 valign=top>
+      <br>
+      <br>
+      掃引速度を変えて測定した結果をまとめた例を Fig. 4.4 (右図) に示す．<br>
+      (作用極 ITO，約 1 cm<sup>2</sup>)
+    </td>
+    <td>
+      <img src="cv4.jpg" width=600>
+    </td>
+  </tr>
+  <tr>
+    <td align=center>
+      Fig. 4.4 CVの測定例
+    </td>
+  </tr>
+</table>
+
+
+<hr>
+<a href="ca.html">3. ポテンシャルステップクロノアンペロメトリ <img width="30" src="rightarrow.gif"></a>　　
+<a href="index.html"><img width="25" src="uparrow.gif">目次</a>　
+<a href="eis.html"><img width="30" src="leftarrow.gif"> 5. 電気化学インピーダンス</a><br>
+<!--
+<a href="cap.html">6. 微分容量測定</a><br>
+<a href="pulse.html">7. パルスボルタンメトリ</a><br>
+<a href="psext.html">. ポテンショスタット拡張基板の自作</a><br>
+-->
+
+
+</body>

@@ -15,7 +15,8 @@
 <table>
   <tr>
        WaveForms の任意関数発生機能 Wavegen には基本的な制御波形がプリセットされている．CV では三角波を用いればよいのだが，波形パラメータは CV 用の設定パラメータとは異なっており，適当な変換が作業が必要になる．パラメータ変換の計算自体は難解なものではないが，変換計算を行って Wavegen に設定値を書き込む作業が面倒である．なお，変換の基本原理は，<a href="../appendix/index.html#cv-params">別ページ</a>に説明があるので，参照されたい．<br>
-       そこで，より設定を簡単に行うため，設定用のスクリプトを含む，<a href="CV.dwf3work">基本設定ファイル (Workspace) を用意した</a>．あらかじめ適当な場所に保存しておく．初回は，Settings -> Device Manager から使用するデバイスを自機に切り替え，そのファイルを保存しておく (Workspace -> Save)．念のため，Wavegen1 の設定で Enable のチェックボックスがチェックされていることを確認してください．<p>
+       そこで，より設定を簡単に行うため，設定用のスクリプトを含む，<a href="CV.dwf3work">基本設定ファイル (Workspace) を用意した</a>．あらかじめ適当な場所に保存しておく．初回は，Settings -> Device Manager から使用するデバイスを自機に切り替え，そのファイルを保存しておく (Workspace -> Save)．念のため，Wavegen1 の設定で Enable のチェックボックスがチェックされていることを確認してください．<br>
+このファイルでは Analog Discovery とは Ch1 を電位軸に割り当てているので，ポテンショスタットと Analog Discovery との接続は <a href="../connection/index.html#connection">Fig. 2.4 (A)</a> のようになる．Fig. 2.4 (B) の接続の場合は，Oscilloscope の XY 画面の設定で Ch2 が X軸になるように変更する．<p>
     <td rowspan=2 valign=top >
        WaveForms を起動し，メニューの Workspace から<a href="CV.dwf3work">CV.dwf3work</a> を読み込む．<br>
        Script ペイン (あるいはタブ) で，掃引条件を設定する (Fig. 4.1 (右図) 参照)．<br>
@@ -54,22 +55,26 @@
 <p>
 <h2>記録画面の設定</h2>
 Analog Discovery は A/D 変換の分解能が 14-bit しかないので，ポテンショスタット側の電流感度の設定が重要である．基本的には可能な限り高い電流感度の設定で測定することが望ましい．<br>
-オシロスコープのペイン (あるいはタブ) に移動する．以下，Fig. 4.2 (右図) を参照．<br>
+オシロスコープのペイン (あるいはタブ) に移動する．以下，Fig. 4.2 (右図) を参照．<p>
 <br>
 <table>
   <tr>
     <td rowspan=2>
+      XY 軸の設定<br>
+      <ul>
+         <li>標準では Ch1 が X 軸 (電位軸) になっているので，Analog Discovery とポテンショスタットの接続のしかたによっては Ch2 が X 軸になるように設定を変更する．</li>
+      </ul>
       時間軸の設定<br>
       <ul>
-         <li>掃引速度，掃引範囲，サイクル数をもとに，全測定時間 t<sub>m</sub> を概算する．Time 設定の Base を t<sub>m</sub>/10 より大きな値にする．</li>
+         <li>掃引速度，掃引範囲，サイクル数をもとに，全測定時間 <i>t</i><sub>m</sub> を概算する．Time 設定の Base を <i>t</i><sub>m</sub>/10 より大きな値にする．</li>
          <ul>
            <li>たとえば1周期に 10 s かかり，5周期分の測定を行うなら 5 s/div 以上が必要．</li>
            <li>このとき，Base/800 が，記録時の時間分解能になる．5 s/div なら 6.25 ms ごとにサンプリングされる．データの最大点数は8000点．</li>
          </ul>
       </ul>
       電位軸の設定<br>
-      Ch1 (電位) の記録条件．
       <ul>
+        <li>標準では Ch1．</li>
         <li>Range と Offset で，測定したい電位範囲が画面の表示範囲に入るように設定．</li>
         <ul>
           <li>下側折り返し電位 -0.20 V，上側折り返し電位 +0.50 V の場合，Offset -100 mV，Range 100 mV/div など．</li>
@@ -77,8 +82,8 @@ Analog Discovery は A/D 変換の分解能が 14-bit しかないので，ポ�
         </ul>
       </ul>
       電流軸の設定<br>
-      Ch2 (電流) の記録条件．
       <ul>
+        <li>標準では Ch2．</li>
         <li>ポテンショスタットの電流感度とセットで決める必要がある．</li>
         <ul>
           <li>アナログポテンショスタットは，電流のフルスケール (FS) を 1 V または 10 V で出力するものが多い．</li>

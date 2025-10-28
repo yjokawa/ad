@@ -50,28 +50,30 @@ Analog Discovery本体もケース内部に固定するので，ケースにはU
 </table>
 
 <p>
-
-ポテンショスタットとの接続は Fig. 2.4 を参照．ポテンショスタットはアナログの制御信号入力端子，電位出力端子，電流出力端子がある，古典的なアナログポテンショスタットであれば，基本的に何でも使える．接続ケーブルは，使用する機器によって適切に選択する．なお，Analog Discovery の記録は 2ch なので，写真のようなバイポテンショスタットを使っても両方のユニットの記録をすることはできない．たとえば回転リング-ディスク電極法の記録はこのままではできない．<p>
-
+ポテンショスタットはアナログの制御信号入力端子，電位出力端子，電流出力端子がある，古典的なアナログポテンショスタットであれば，基本的に何でも使える．接続ケーブルは，使用する機器によって適切に選択する．<br>
+ポテンショスタットとの接続は Fig. 2.4 を参照．<br>
+Analog Discovery の二つの入力端子，Ch1 と Ch2，のどちらを電位に，どちらを電流に割り当てるかで，二つの接続方法が考えられる．<br>
+WaveForms の Oscilloscope の X-Y 画面では，デフォルトでは Ch1 が X 軸 に割り当てられているので，左の接続の場合はデフォルトの設定のままでよい．右側の接続を使うときは，Ch2 を X 軸に，Ch2 を Y 軸に割り当てるように設定を変更する．この設定さえ適切に行なえば，通常のボルタンメトリやアンペロメトリの測定ではどちらを使うこともできる．
+<p>
+一方で，どちらかの接続でないと利用できない機能もあるので，注意が必要である．たとえば，<a href="../capacitance/index.html">微分容量測定</a>で用いる "Impedance" モードでは (A) の接続 (Ch1 が電位) にする必要がある．一方，<a href = "../eis/index.html">電気化学インピーダンス</a> ("Network" モードを使用) では Ch2 を電位にする (B) を使う必要がある．詳しくは各節の説明を参照していただきたい．
+<p>
+<#connection>
 <table>
 <tr>
-  <td><img src="connection.gif">
-  <td><img width="300" src=""></td>
+  <td><img height=400 src="connection2.gif">
 </tr>
 <tr>
-  <td>Fig. 2.4 ポテンショスタットとの接続．</td>
+  <td>Fig. 2.4 ポテンショスタットとの接続．(A) Ch1 に電位，Ch2 に電流を割り当てる接続．(B) Ch1 に電流，Ch2 に電位を割り当てる接続．</td>
   <td></td>
 </tr>
 </table>
-
 <p>
-
-
+Analog Discovery の記録系は 2ch なので，写真のようなバイポテンショスタットを使っても両方のユニットの記録をすることはできない．たとえば回転リング-ディスク電極法の記録はこのままではできない．現在の WaveForms は複数の Analog Discovery を同時に操作することができるので，Analog Discovery を 2 台用意すれば，バイポテンショスタットをフルに利用することができる．<p>
 
 <hr>
-<a href="intro.html">1. Analog Discovery と WaveForms <img width="30" src="rightarrow.gif"></a>　　
-<a href="index.html"><img width="25" src="uparrow.gif">目次</a>　
-<a href="ca.html"><img width="30" src="leftarrow.gif">  3. ポテンシャルステップクロノアンペロメトリ</a><br>
+<a href="../intro/index.html">1. Analog Discovery と WaveForms <img width="30" src="../rightarrow.gif"></a>　　
+<a href="../index.html"><img width="25" src="../uparrow.gif">目次</a>　
+<a href="../chronoamperometry/index.html"><img width="30" src="../leftarrow.gif">  3. ポテンシャルステップクロノアンペロメトリ</a><br>
 <!--
 <a href="cv.html">4. XYレコータとして：サイクリックボルタンメトリ</a><br>
 <a href="eis.html">5. ネットワークアナライザと電気化学インピーダンス</a><br>

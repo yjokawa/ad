@@ -58,8 +58,8 @@ Analog Discovery はもともとが教育用ということもあって，安価
 
 
 <hr>
-<a href="index.html"><img width="25" src="../uparrow.gif">目次</a>　
-<a href="connection.html"><img width="30" src="../leftarrow.gif">  2. 市販ポテンショスタットとの組み合わせ：接続法</a><br>
+<a href="../index.html"><img width="25" src="../uparrow.gif">目次</a>　
+<a href="../connection/index.html"><img width="30" src="../leftarrow.gif">  2. 市販ポテンショスタットとの組み合わせ：接続法</a><br>
 <!-- <a href="ca.html">3. 時間変化の記録：ポテンシャルステップクロノアンペロメトリ</a><br>
 <a href="cv.html">4. XYレコータとして：サイクリックボルタンメトリ</a><br>
 <a href="eis.html">5. ネットワークアナライザと電気化学インピーダンス</a><br>

@@ -12,7 +12,7 @@
 <a name="cv-params">
 <h2>サイクリックボルタンメトリの波形データ設定の基本的な考え方</h2>
 
-WaveForms の Wavegen の波形設定パラメータはサイクリックボルタンメトリで常用されるパラメータではないので，適切に変換を行って設定する必要がある．ここではその基本的な考え方を説明する．実際には，これらの換算を行う<a href="cv.dwf3script">スクリプト</a>を作成したので，それを利用するのが簡単である (<a href="../cyclicvoltammetry/index.html">本記事</a>を参照)．<br>
+WaveForms の Wavegen の波形設定パラメータはサイクリックボルタンメトリで常用されるパラメータではないので，適切に変換を行って設定する必要がある．ここではその基本的な考え方を説明する．実際には，これらの換算を行う<a href="../cyclicvoltammetry/cv.dwf3script">スクリプト</a>を作成したので，それを利用するのが簡単である (<a href="../cyclicvoltammetry/index.html">本記事</a>を参照)．<br>
       <br>
       Wavegen の三角波の設定パラメータは，次の5つである．<br>
       <li>振幅 (Amplitude)

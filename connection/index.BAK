@@ -57,7 +57,7 @@ WaveForms の Oscilloscope の X-Y 画面では，デフォルトでは Ch1 が 
 <p>
 一方で，どちらかの接続でないと利用できない機能もあるので，注意が必要である．たとえば，<a href="../capacitance/index.html">微分容量測定</a>で用いる "Impedance" モードでは (A) の接続 (Ch1 が電位) にする必要がある．一方，<a href = "../eis/index.html">電気化学インピーダンス</a> ("Network" モードを使用) では Ch2 を電位にする (B) を使う必要がある．詳しくは各節の説明を参照していただきたい．
 <p>
-<#connection>
+<a name="connection">
 <table>
 <tr>
   <td><img height=400 src="connection2.gif">

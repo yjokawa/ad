@@ -88,14 +88,18 @@ Analog Discovery は A/D 変換の分解能が 14-bit しかないので，ポ�
           <li>たとえば待機時間 5 s に測定時間 10 s であれば <i>t</i><sub>m</sub> = 15 s なので，1.5 s/div より大きな値 (2 s/div 等) に設定する．</li>
           <li>時間分解能がここで決まるので，むやみに大きな値にしてはならない．</li>
         </ul>
-        <li>Ch1 (電位) の記録条件．</li>
+        <li>以下は Analog Discovery とポテンショスタットの接続を Ch1: 電位，Ch2: 電流 とした場合 (<a href="../connection/index.html#connection">Fig. 2.4 (A)</a>)．</li>
+        <ul>
+          <li><a href="../connection/index.html#connection">Fig. 2.4 (B)</a> の接続 (Ch1: 電流，Ch2: 電位) の時は Ch1 と Ch2 の役割を入れ替えて設定．</li>
+        </ul>
+        <li>電位 (Ch1) の記録条件．</li>
         <ul>
           <li>Range と Offset で，設定された開始電位，ステップ電位が画面の表示範囲に入るように．</li>
           <ul>
             <li>-0.10 V から +0.20 V へのステップの場合，Offset 0，Range 200 mV/div など．</li>
           </ul>
         </ul>
-        <li>Ch2 (電流) の記録条件．</li>
+        <li>電流 (Ch2) の記録条件．</li>
         <ul>
           <li>ポテンショスタットの電流感度とセットで決める必要がある．</li>
           <ul>
@@ -129,14 +133,14 @@ Analog Discovery は A/D 変換の分解能が 14-bit しかないので，ポ�
       <ul>
         <li>測定セルへの配線を適切に行う．ポテンショスタットのスイッチを入れ，外部ファンクションジェネレータを有効にし，電流感度を適切に設定する．</li>
         <li>この状態でポテンショスタットを有効にすると，初期電位が印加される．</li>
-        <li>[Scope 1] タブの 右向き三角 <img src="play.jpg"> をクリックすると記録が始まる．</li>
+        <li>[Scope 1] タブの 右向き三角 <img src="../play.jpg"> をクリックすると記録が始まる．</li>
         <ul>
-          <li>このとき，<img src="play.jpg"> が <img src="stop.jpg"> に変わる．</li>
+          <li>このとき，<img src="../play.jpg"> が <img src="../stop.jpg"> に変わる．</li>
         </ul>
         <li>ただちに [Wavegen 1] タブの 右向き三角 <img src="play.jpg"> をクリックすると設定した電位プログラムが動き出す．</li>
         <li>所定の待機時間後，電位のステップがおこり，電流が記録される．</li>
-        <li>所定時間の測定が終わったら，[Scope 1] タブの 赤丸 <img src="stop.jpg"> をクリックして，記録を終了する．</li<
-        <li>[Wavegen 1] タブの 赤丸 <img src="stop.jpg"> をクリックして，ファンクションジェネレータを停止する．</li>
+        <li>所定時間の測定が終わったら，[Scope 1] タブの 赤丸 <img src="../stop.jpg"> をクリックして，記録を終了する．</li<
+>        <li>[Wavegen 1] タブの 赤丸 <img src="../stop.jpg"> をクリックして，ファンクションジェネレータを停止する．</li>
         <li>ポテンショスタットをオフにする．</li>
       </ul>
     </td>
@@ -180,7 +184,7 @@ Fig. 3.5 に実際に測定した結果の Cottrtellプロットの例を示す�
 <hr>
 <a href="../connection/index.html">2. 市販ポテンショスタットとの組み合わせ：接続法 <img width="30" src="../rightarrow.gif"></a>　　
 <a href="../index.html"><img width="25" src="../uparrow.gif">目次</a>　
-<a href="../cyclicvoltammetry/index.html"<img width="30" src="../leftarrow.gif">  4. サイクリックボルタンメトリ</a><br>
+<a href="../cyclicvoltammetry/index.html"><img width="30" src="../leftarrow.gif">  4. サイクリックボルタンメトリ</a><br>
 <!--
 <a href="eis.html">5. 電気化学インピーダンス</a><br>
 <a href="cap.html">6. 微分容量測定</a><br>

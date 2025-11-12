@@ -190,7 +190,7 @@
         <li>スキャンが始まるので，終了するまで待つ．</li>
         <li>周波数が低くなるとデータの取得に長い時間が必要になる．必要な範囲のデータが取れているようなら，Stop ボタン <img src="../stop.jpg"> (Singleボタンの隣の Run ボタンが切り替わる．またはタブのボタンでも可) をクリックして測定を終了する．</li>
       </ul>
-      通常の電気化学系では虚数項 Z" は負の値を示すので，Nyquist 平面では第4象限にデータが出てくる．<br>
+      多くの電気化学系では虚数項 Z" は負の値を示すので，Nyquist 平面では第4象限にデータが出てくる．<br>
       この例で第1象限にあるデータは，ポテンショスタットの追随していない高周波数領域のデータであり，物理的な意味はない．<br>
     </td>
     <td>
@@ -206,7 +206,7 @@
 <p>
 <hr>
 <h2>測定データの保存</h2>
-File &gt; > Export (または Ctrl+E)，現れた画面で，左上 Source から [Nyquist] を選択する．<br>
+File > Export (または Ctrl+E)，現れた画面で，左上 Source から [Nyquist] を選択する．<br>
  [Save to Clipbord] ボタンをクリック．<br>
 計測データがクリップボードに取り込まれたので，Excel 等を開いて貼り付ける (編集 > 貼り付け や Ctrl+V など)．<br>
 <strong>重要：</strong>このとき，ポテンショスタットの電流感度の値を記録に加えること．<br>
@@ -221,9 +221,10 @@ File &gt; > Export (または Ctrl+E)，現れた画面で，左上 Source か�
 <table>
   <tr>
     <td rowspan=2 valign=top>
-      このようにして得られた測定結果の例を Fig. 5.8 (右図) に示す．<br>
-      この図はいわゆる Nyquist プロット (Cole-Cole プロット) であるが，電荷移動過程に対応する円弧，拡散に対応する Warburg インピーダンス，残余抵抗 (溶液抵抗+電極抵抗) に対応する Z' 軸切片等を読み出すことができ，さまざまな情報を取り出すことができる．<br>
-      また，各ポイントは，周波数，実部，虚部の数値データの組になっているので，様々なプロットに作り替えて解析することができる．<br>
+      このようにして得られた測定結果の例を Fig. 5.8 (右図) に示す．<p>
+      この図はいわゆる Nyquist プロット (Cole-Cole プロット) であるが，電荷移動過程に対応する円弧，拡散に対応する Warburg インピーダンス (右上がりの直線部)，残余抵抗 (溶液抵抗+電極抵抗) に対応する Z' 軸切片等を読み出すことができ，さまざまな情報を取り出すことができる．<p>
+      WaveForms の Nyquist プロット (Fig. 5.7) とは上下裏返ったような図になっているが，電気化学では虚数項 Z" 軸を上方向に負に取る (あるいは -Z" を縦軸に取る) ことが多い．<p>
+      また，各ポイントは周波数，実部，虚部の数値データの組になり，これらを様々なプロットに作り変えて解析することができる．<br>
     </td>
     <td>
       <a href="eis8.jpg" target="_blank"><img src="eis8.jpg" width=500>
@@ -240,7 +241,7 @@ File &gt; > Export (または Ctrl+E)，現れた画面で，左上 Source か�
 
 <hr>
 <a href="../cyclicvoltammetry/index.html">4. サイクリックボルタンメトリ <img width="30" src="../rightarrow.gif"></a>　　
-<a href="../index.html"><img width="25" src="../uparrow.gif">目次</a>　
+<a href="../index.html#index"><img width="25" src="../uparrow.gif">目次</a>　
 <a href="../capacitance/index.html"><img width="30" src="../leftarrow.gif">6. 微分容量測定</a><br>
 <!--
 <a href="pulse.html">7. パルスボルタンメトリ</a><br>

@@ -18,7 +18,7 @@
 
 <a name="manual">
 <h2>測定</h2>
-Analog Discovery とポテンショスタットとの接続は，<a href="../connection/index.html">2節</a> の接続法にする (前節の電気化学インピーダンス測定とは異なる)．<br>
+Analog Discovery とポテンショスタットとの接続は，<a href="../connection/index.html#connection">2節 Fig. 2.4 (A)</a> の接続法にする (前節の電気化学インピーダンス測定とは異なる)．<br>
 WaveForms の起動画面から Impedance を選択する (あるいは Welcome の [+] > Impedance)．<p>
 <table>
   <tr>
@@ -98,7 +98,7 @@ WaveForms のインピーダンス測定では，周波数の自動変化を行�
 
 <p>
 <hr>
-<a href="../eis/index.html">5. 電気化学インピーダンス <img width="30" src="../rightarrow.gif"></a>　　
+<a href="../eis/index.html#index">5. 電気化学インピーダンス <img width="30" src="../rightarrow.gif"></a>　　
 <a href="../index.html"><img width="25" src="../uparrow.gif">目次</a>　
 <a href="../potentiostat-ext/index.html"><img width="30" src="../leftarrow.gif">8. ポテンショスタット拡張基板の自作</a><br>
 <!--

@@ -12,19 +12,19 @@
 オシロスコープは，XYレコーダモードで使用する．<p>
 <hr>
 <h2>スクリプトによる掃引条件の設定</h2>
+
+       WaveForms の任意関数発生機能 Wavegen には基本的な制御波形がプリセットされている．CV では三角波を用いればよいのだが，波形パラメータは CV 用の設定パラメータとは異なっており，適当な変換が作業が必要になる．パラメータ変換の計算自体は難解なものではないが，変換計算を行って Wavegen に設定値を書き込む作業が面倒である．なお，変換の基本原理は，<a href="../appendix/index.html#cv-params">別ページ</a>に説明があるので，参照されたい．<br>
+       そこで，より設定を簡単に行うため，設定用のスクリプトを含む，<a href="CV.dwf3work">基本設定ファイル (Workspace) を用意した</a>．あらかじめ適当な場所に保存しておく．Analog Discovery とポテンショスタットの接続は <a href="../connection/index.html#connection">Fig. 2.4 (A)</a> のようになる (Ch1 を電位軸に割り当て）．<br>
+<a href="../connection/index.html#connection">Fig. 2.4 (B)</a> の接続の場合は，この Workspace ファイルにおいて Oscilloscope の XY 画面の設定で Ch2 が X軸になるように変更するか，<a href="https://doi.org/10.20776/900123283">こちらの統合版 Workspace ファイル</a>を用いる (CV 以外の機能も入れているが，CVについての設定のしかたは以下とほぼ同じ)．<p>
+いずれも初回は Settings -> Device Manager から使用するデバイスを自機に切り替え，そのファイルを保存しておく (Workspace -> Save)．
+<ul>
+  <li>WaveForms を起動し，メニューの Workspace から使用する Workspace ファイルを読み込む．<br>
+  <li>Script タブ (あるいはペイン) で，掃引条件を設定する (Fig. 4.1 (右図) 参照)．<br>
+</ul>
 <table>
   <tr>
-       WaveForms の任意関数発生機能 Wavegen には基本的な制御波形がプリセットされている．CV では三角波を用いればよいのだが，波形パラメータは CV 用の設定パラメータとは異なっており，適当な変換が作業が必要になる．パラメータ変換の計算自体は難解なものではないが，変換計算を行って Wavegen に設定値を書き込む作業が面倒である．なお，変換の基本原理は，<a href="../appendix/index.html#cv-params">別ページ</a>に説明があるので，参照されたい．<br>
-       そこで，より設定を簡単に行うため，設定用のスクリプトを含む，<a href="CV.dwf3work">基本設定ファイル (Workspace) を用意した</a>．あらかじめ適当な場所に保存しておく．初回は，Settings -> Device Manager から使用するデバイスを自機に切り替え，そのファイルを保存しておく (Workspace -> Save)．念のため，Wavegen1 の設定で Enable のチェックボックスがチェックされていることを確認してください．<br>
-このファイルでは Analog Discovery とは Ch1 を電位軸に割り当てているので，ポテンショスタットと Analog Discovery との接続は <a href="../connection/index.html#connection">Fig. 2.4 (A)</a> のようになる．Fig. 2.4 (B) の接続の場合は，Oscilloscope の XY 画面の設定で Ch2 が X軸になるように変更する．<p>
     <td rowspan=2 valign=top >
-       WaveForms を起動し，メニューの Workspace から<a href="CV.dwf3work">CV.dwf3work</a> を読み込む．<br>
-       Script ペイン (あるいはタブ) で，掃引条件を設定する (Fig. 4.1 (右図) 参照)．<br>
        <ul>
-<!--         <li>Wavegen と Scope はあらかじめ開いておく．
-         <li>Wavegen は Simple モードにしておく (開いた直後は Simpleモードになっているので，変更した場合)．Fig. 4.1 の操作 2) 参照．
-         <li>Welcome [+] > Script で Script タブを開く．
-         <li>Script タブの File > Open Project で<a href="cv.js">スクリプト</a>を読み込む．Fig. 4.1 (右図) 参照． -->
          <li>Script の冒頭部分 (赤枠で囲った部分) がパラメータ設定になっているので，測定条件に合わせて変更する．
          <ul>
            <li>SweepRate 掃引速度を V/s 単位で設定
@@ -39,13 +39,13 @@
         <li>Wavegen ペイン (またはタブ) で波形を確認する．
       <ul>
     </td>
-    <td>
+    <td valign=top>
       <br>
       <img src="cv1.jpg" width=600>
     </td>
   </tr>
   <tr>
-    <td>
+    <td align=center>
       Fig. 4.1 掃引条件設定スクリプトとパラメータ修正
     </td>
   </tr>
@@ -54,55 +54,50 @@
 <hr>
 <p>
 <h2>記録画面の設定</h2>
-Analog Discovery は A/D 変換の分解能が 14-bit しかないので，ポテンショスタット側の電流感度の設定が重要である．基本的には可能な限り高い電流感度の設定で測定することが望ましい．<br>
-オシロスコープのペイン (あるいはタブ) に移動する．以下，Fig. 4.2 (右図) を参照．<p>
-<br>
+A/D 変換の分解能を考慮したポテンショスタット側の電流感度の設定が重要である．基本的には可能な限り高い電流感度の設定で測定することが望ましい．<br>
+Oscilloscope タブ (あるいはペイン) に移動する．以下，Fig. 4.2 (右図) を参照．<p>
 <table>
   <tr>
     <td rowspan=2>
-      XY 軸の設定<br>
+      <strong>XY 軸の設定の確認</strong><br>
       <ul>
-         <li>標準では Ch1 が X 軸 (電位軸) になっているので，Analog Discovery とポテンショスタットの接続のしかたによっては Ch2 が X 軸になるように設定を変更する．</li>
+         <li>Ch1/2 の接続割り当てが Workspace ファイルの設定に合ったものになっていることを確認する．
       </ul>
-      時間軸の設定<br>
+      <strong>時間軸の設定</strong><br>
       <ul>
-         <li>掃引速度，掃引範囲，サイクル数をもとに，全測定時間 <i>t</i><sub>m</sub> を概算する．Time 設定の Base を <i>t</i><sub>m</sub>/10 より大きな値にする．</li>
+         <li>掃引速度，掃引範囲，サイクル数をもとに，全測定時間 <i>t</i><sub>m</sub> を概算する．
+         <li>Time 設定の Base を <i>t</i><sub>m</sub>/10 より大きな値にする．
          <ul>
-           <li>たとえば1周期に 10 s かかり，5周期分の測定を行うなら 5 s/div 以上が必要．</li>
-           <li>このとき，Base/800 が，記録時の時間分解能になる．5 s/div なら 6.25 ms ごとにサンプリングされる．データの最大点数は8000点．</li>
+           <li>たとえば1周期に 10 s かかり，5周期分の測定を行うなら (<i>t</i><sub>m</sub> = 50 s，<i>t</i><sub>m</sub>/10 = 5)， 5 s/div 以上が必要なので，たとえば 12 s/div を選択する．
+           <li>このとき，Base/800 が，記録時の時間分解能になる．5 s/div なら 6.25 ms ごとにサンプリングされる．データの最大点数は8000点．
          </ul>
       </ul>
-      電位軸の設定<br>
+      <strong>電位軸の設定</strong><br>
       <ul>
-        <li>標準では Ch1．</li>
-        <li>Range と Offset で，測定したい電位範囲が画面の表示範囲に入るように設定．</li>
+        <li>Range と Offset で，測定したい電位範囲が画面の表示範囲に入るように設定．
         <ul>
-          <li>下側折り返し電位 -0.20 V，上側折り返し電位 +0.50 V の場合，Offset -100 mV，Range 100 mV/div など．</li>
-          <li>この設定は記録の精度には影響しないので，測定時の見やすさだけで決めてよい．</li>
+          <li>下側折り返し電位 -0.20 V，上側折り返し電位 +0.50 V の場合，Offset -100 mV，Range 100 mV/div など．
+          <li>この設定は記録の精度には影響しないので，測定時の見やすさだけで決めてよい．
         </ul>
       </ul>
-      電流軸の設定<br>
+      <strong>電流軸の設定</strong><br>
       <ul>
-        <li>標準では Ch2．</li>
-        <li>ポテンショスタットの電流感度とセットで決める必要がある．</li>
+        <li>ポテンショスタットの電流感度とセットで決める必要がある．
         <ul>
-          <li>アナログポテンショスタットは，電流のフルスケール (FS) を 1 V または 10 V で出力するものが多い．</li>
-          <li>どちらのタイプかは説明書で確認しておくこと</li>
+          <li>アナログポテンショスタットは，電流のフルスケール (FS) を 1 V または 10 V で出力するものが多い．
+          <li>どちらのタイプかは説明書で確認しておくこと．
         </ul>
-        <li>ポテンショスタットは電流のオーバーロードが発生しない範囲で最高の感度にするのが基本．</li>
-        <li>1 V FS のポテンショスタットの場合，200 mV/div (または 500 mV/div) に設定する</li>
-        <li>10 V FS のポテンショスタットの場合，2 V/div (または 5 V/div) に設定する</li>
+        <li>ポテンショスタットは電流のオーバーロードが発生しない範囲で最高の感度にするのが基本．
+        <li>1 V FS のポテンショスタットの場合，200 mV/div (または 500 mV/div) に設定する．
+        <li>10 V FS のポテンショスタットの場合，2 V/div (または 5 V/div) に設定する．
       </ul>
       
     </td>
-    <td>
+    <td align=center>
       <img src="cv2-1.jpg" width=550><br>
       <br>
-      <img src="cv2-2.jpg" width=550>
-    </td>
-  </tr>
-  <tr>
-    <td>
+      <img src="cv2-2.jpg" width=550><br>
+      <br>
       Fig. 4.2オシロスコープの設定
     </td>
   </tr>
@@ -174,7 +169,7 @@ Mov. 4.1 サイクリックボルタンメトリ測定中の様子．<p>
 
 <hr>
 <a href="../chronoamperometry/index.html">3. ポテンシャルステップクロノアンペロメトリ <img width="30" src="../rightarrow.gif"></a>　　
-<a href="../index.html"><img width="25" src="../uparrow.gif">目次</a>　
+<a href="../index.html#index"><img width="25" src="../uparrow.gif">目次</a>　
 <a href="../eis/index.html"><img width="30" src="../leftarrow.gif"> 5. 電気化学インピーダンス</a><br>
 <!--
 <a href="cap.html">6. 微分容量測定</a><br>

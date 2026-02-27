@@ -212,7 +212,7 @@ File > Export (または Ctrl+E)，現れた画面で，左上 Source から [Ny
       WaveForms の Nyquist プロット (Fig. 5.7) とは上下裏返ったような図になっているが，電気化学では虚数項 Z" 軸を上方向に負に取る (あるいは -Z" を縦軸に取る) ことが多い．<p>
       また，各ポイントは周波数，実部，虚部の数値データの組になり，これらを様々なプロットに作り変えて解析することができる．<br>
     </td>
-    <td>
+    <td align=center>
       <a href="eis8.jpg" target="_blank"><img src="eis8.jpg" width=500><br>
       Fig. 5.8 電気化学インピーダンスの測定例</a>
     </td>
